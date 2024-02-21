@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.oh.sample.mapper.SampleMapper">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO sample (
+        <trim prefixOverrides=",">
+            <if test="id != null">
+                , id
+            </if>
+            <if test="name != null">
+                , name
+            </if>
+            <if test="descp != null">
+                , descp
+            </if>
+            <if test="state != null">
+                , state
+            </if>
+            <if test="regDate != null">
+                , reg_date
+            </if>
+            <if test="modDate != null">
+                , mod_date
+            </if>
+        </trim>
+        ) VALUES (
+        <trim prefixOverrides=",">
+            <if test="id != null">
+                , #{id}
+            </if>
+            <if test="name != null">
+                , #{name}
+            </if>
+            <if test="descp != null">
+                , #{descp}
+            </if>
+            <if test="state != null">
+                , #{state}
+            </if>
+            <if test="regDate != null">
+                , #{regDate}
+            </if>
+            <if test="modDate != null">
+                , #{modDate}
+            </if>
+        </trim>
+        )
+    </insert>
+
+    <select id="find" resultType="org.oh.sample.model.Sample">
+        <include refid="org.oh.common.mapper.CommonMapper.page_top"/>
+        <include refid="org.oh.sample.mapper.SampleMapper.find"/>
+        <if test="order_by != null">
+            ORDER BY ${order_by}
+        </if>
+        <include refid="org.oh.common.mapper.CommonMapper.page_bottom"/>
+    </select>
+
+    <select id="count" resultType="long">
+        <include refid="org.oh.common.mapper.CommonMapper.count_top"/>
+        FROM (
+        <include refid="org.oh.sample.mapper.SampleMapper.find"/>
+        ) a
+    </select>
+
+    <update id="update">
+        UPDATE sample
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="descp != null">
+                descp = #{descp},
+            </if>
+            <if test="state != null">
+                state = #{state},
+            </if>
+            <if test="regDate != null">
+                reg_date = #{regDate},
+            </if>
+            <if test="modDate != null">
+                mod_date = #{modDate},
+            </if>
+        </set>
+        <where>
+            <if test="id != null">
+                AND id = #{id}
+            </if>
+        </where>
+    </update>
+
+    <delete id="delete">
+        DELETE FROM sample
+        <include refid="where"/>
+    </delete>
+
+    <sql id="find">
+        SELECT *
+        FROM sample
+        <include refid="where"/>
+    </sql>
+
+    <sql id="where">
+        <where>
+            <if test="id != null">
+                AND id = #{id}
+            </if>
+            <if test="name != null">
+                AND name = #{name}
+            </if>
+            <if test="descp != null">
+                AND descp = #{descp}
+            </if>
+            <if test="state != null">
+                AND state = #{state}
+            </if>
+            <if test="regDate != null">
+                AND reg_date = #{regDate}
+            </if>
+            <if test="modDate != null">
+                AND mod_date = #{modDate}
+            </if>
+            <if test="regDateStart != null">
+                AND reg_date >= #{regDateStart}
+            </if>
+            <if test="regDateEnd != null">
+                <![CDATA[
+                AND reg_date <= #{regDateEnd}
+                ]]>
+            </if>
+        </where>
+    </sql>
+
+    <!-- /////////////////////////////////////////////////////////////////////////// -->
+
+    <select id="stats" resultType="java.util.LinkedHashMap">
+        <![CDATA[
+SELECT DATE_FORMAT(reg_date, '%Y-%m-%d') AS date,
+       COUNT(1) AS total,
+       CONCAT('ACTIVE', '|', CAST(SUM(CASE WHEN state = 'ACTIVE' THEN 1 ELSE 0 END) AS CHAR)) AS option1,
+       CONCAT('DELETED', '|', CAST(SUM(CASE WHEN state = 'DELETED' THEN 1 ELSE 0 END) AS CHAR)) AS option2
+FROM sample
+            ]]>
+        <include refid="where"/>
+        <![CDATA[
+GROUP BY DATE_FORMAT(reg_date, '%Y-%m-%d')
+            ]]>
+        <if test="order_by != null">
+            ORDER BY ${order_by}
+        </if>
+    </select>
+</mapper>

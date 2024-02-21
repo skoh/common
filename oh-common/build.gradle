@@ -1,0 +1,82 @@
+plugins {
+    id 'war'
+    id 'jacoco'
+    id 'org.sonarqube' version "$SONARQUBE_VERSION"
+}
+
+//archivesBaseName = 'oh-common'
+
+jar {
+    enabled = true
+    archiveClassifier = ''
+//    archiveFileName = "${archivesBaseName}-${VERSION}.jar"
+    exclude 'org/oh/sample'
+    exclude 'org/oh/*Application.class'
+    exclude 'mapper'
+    exclude 'static'
+    exclude 'templates'
+    exclude 'application*.yml'
+    exclude 'hazelcast.yaml'
+}
+
+//tasks.register('fatJar', Jar) {
+//    group = 'oh-common'
+//    manifest { attributes 'Main-Class': 'org.oh.SampleApplication' }
+//    from {
+//        (configurations.runtimeClasspath - configurations.exclude).collect {
+//            it.isDirectory() ? it : zipTree(it)
+//        }
+//    }
+//    exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
+//    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+//    with jar
+//}
+
+//bootJar {
+//    enabled = false
+//    exclude { configurations.exclude.resolvedConfiguration.files.contains(it.file) }
+//}
+
+war {
+    enabled = false
+}
+
+//bootWar {
+//    archiveFileName = "${archivesBaseName}-${VERSION}.war"
+//    rootSpec.exclude 'oh-common-*.jar'
+//
+//    from("${rootDir}/${archivesBaseName}") {
+//        include 'test.lic'
+//        into './WEB-INF/lib'
+//    }
+//}
+
+//springBoot {
+//    mainClass = 'org.oh.CommonApplication'
+//}
+
+dependencies {
+//    implementation(project(':ds-did')) {
+//        exclude group: 'org.oh', module: 'oh-common'
+//    }
+
+    implementation 'jstl:jstl:1.2'
+    providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+
+    ///////////////////////////////////////////////////////////////////////////
+
+    implementation 'com.h2database:h2'
+
+//    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client:3.1.4'
+//    runtimeOnly 'mysql:mysql-connector-java'
+//    runtimeOnly 'org.postgresql:postgresql'
+}
+
+jacoco.toolVersion = JACOCO_VERSION
+jacocoTestReport.reports.xml.required.set(true)
+
+tasks.register('commonTest') {
+    group = 'oh-common'
+    println()
+}

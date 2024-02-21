@@ -1,0 +1,22 @@
+plugins {
+    id 'jacoco'
+    id 'org.sonarqube' version "$SONARQUBE_VERSION"
+}
+
+jar {
+    enabled = true
+    archiveClassifier = ''
+    exclude 'org/oh/*Application.class'
+    exclude 'application*.yml'
+}
+
+dependencies {
+    if (DEBUG_MODE == 'true') {
+        implementation project(':oh-common')
+    }
+
+    implementation fileTree('lib')
+}
+
+jacoco.toolVersion = JACOCO_VERSION
+jacocoTestReport.reports.xml.required.set(true)

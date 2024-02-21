@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.oh.common.mapper.CommonMapper">
+    <sql id="page_top">
+        SELECT * FROM (
+        SELECT ROWNUM AS rnum, a.* FROM (
+    </sql>
+
+    <sql id="page_middle">
+        <if test="page != null and order_by != null">
+            , ROW_NUMBER() OVER (ORDER BY #{order_by}) rnum
+        </if>
+    </sql>
+
+    <sql id="page_bottom">
+        <if test="page != null and psize != null">
+            ) a
+            ) WHERE rnum BETWEEN #{psize} * (#{page} - 1) + 1
+            AND #{psize} * #{page}
+        </if>
+    </sql>
+
+    <sql id="count_top">
+        SELECT COUNT(1) AS count
+    </sql>
+</mapper>

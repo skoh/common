@@ -1,0 +1,194 @@
+plugins {
+//   id 'application'
+    id 'org.springframework.boot'
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+
+    group = 'org.oh'
+    version = VERSION
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+//    compileJava.options.encoding = 'UTF-8'
+}
+
+subprojects {
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+//    configurations {
+//        compileOnly {
+//            extendsFrom annotationProcessor
+//        }
+//    }
+
+    // https://github.com/spring-projects/spring-framework/wiki/Upgrading-to-Spring-Framework-6.x#parameter-name-retention
+//    tasks.withType(JavaCompile).configureEach {
+//        options.compilerArgs.add("-parameters")
+//    }
+
+    repositories {
+        // https://search.maven.org
+//        mavenCentral()
+
+        // https://mvnrepository.com/repos/jcenter
+//        jcenter()
+
+//        maven {
+//            url 'https://repo1.maven.org/maven2'
+//        }
+
+        maven {
+            url "${NEXUS_URL}/maven-public"
+            credentials {
+                username USER
+                password PASSWORD
+            }
+            allowInsecureProtocol = true
+        }
+    }
+
+//    javadoc {
+//        options.encoding = 'UTF-8'
+//    }
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+        implementation 'org.springframework.boot:spring-boot-starter-validation'
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.boot:spring-boot-starter-security'
+        implementation 'org.springframework.boot:spring-boot-starter-mail'
+        implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+        implementation 'org.springframework.boot:spring-boot-starter-mustache'
+        implementation 'org.springframework.session:spring-session-hazelcast'
+        implementation 'org.springframework.retry:spring-retry'
+        implementation 'org.springdoc:springdoc-openapi-ui:1.6.13'
+        implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.0'
+
+        developmentOnly 'org.springframework.boot:spring-boot-devtools'
+        annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+//            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+//            exclude group: 'com.vaadin.external.google', module: 'android-json'
+        }
+
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+        testCompileOnly 'org.projectlombok:lombok'
+        testAnnotationProcessor 'org.projectlombok:lombok'
+
+        compileOnly 'javax.interceptor:javax.interceptor-api:1.2.2'
+        implementation 'commons-beanutils:commons-beanutils:1.9.4'
+        implementation 'commons-io:commons-io:2.15.1'
+        implementation 'org.apache.commons:commons-imaging:1.0-alpha3'
+        implementation 'org.apache.httpcomponents:httpclient-cache'
+//       implementation 'org.apache.httpcomponents:httpasyncclient'
+        implementation 'org.apache.commons:commons-exec:1.4.0'
+        implementation 'com.squareup.okhttp3:okhttp-urlconnection'
+        implementation 'com.google.guava:guava:33.0.0-jre'
+        implementation 'com.google.code.gson:gson'
+        implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv'
+        implementation 'com.github.wnameless.json:json-flattener:0.16.0'
+        implementation 'org.imgscalr:imgscalr-lib:4.2'
+        implementation 'org.bouncycastle:bcpkix-jdk15on:1.63'
+
+        implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+        runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+        runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
+        implementation 'com.hazelcast:hazelcast-spring'
+        implementation 'com.hazelcast:spring-data-hazelcast:2.4.0'
+
+        if (DEBUG_MODE == 'false') {
+            implementation 'org.oh:oh-common:1.5.0'
+//            implementation fileTree(dir: "${ROOT_DIR}/did/lib", includes: [
+//                    'oh-common-*.jar'
+//            ], excludes: [
+//                    'oh-common-*-*.jar'
+//            ])
+        }
+
+        tasks.withType(Jar).tap {
+            configureEach {
+                duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+            }
+        }
+    }
+
+    bootJar {
+        enabled = false
+    }
+
+    tasks.register('sourcesJar', Jar) {
+        group = 'common'
+        dependsOn classes
+        archiveClassifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+    tasks.register('javadocJar', Jar) {
+        group = 'common'
+        dependsOn javadoc
+        archiveClassifier = 'javadoc'
+        from javadoc
+    }
+
+    tasks.withType(Javadoc).configureEach {
+        failOnError false
+        options.encoding 'UTF-8'
+        options.addStringOption('charSet', 'UTF-8')
+        options.addStringOption('Xdoclint:none', '-quiet')
+    }
+
+//    tasks.register('copyJar', Copy) {
+//        group = 'common'
+//        dependsOn jar, sourcesJar, javadocJar
+//        from 'build/libs'
+//        into "${ROOT_DIR}/did/lib"
+//        include '*.*'
+//    }
+//
+//    assemble.dependsOn copyJar
+    artifacts.archives sourcesJar, javadocJar
+
+    publishing {
+        repositories {
+            maven {
+                def mavenUrl = "${NEXUS_URL}/maven-"
+                url = version.endsWith('SNAPSHOT') ? "${mavenUrl}snapshots" : "${mavenUrl}releases"
+                credentials {
+                    username USER
+                    password PASSWORD
+                }
+                allowInsecureProtocol = true
+            }
+        }
+        publications {
+            maven(MavenPublication) {
+                from components.java
+                artifact sourcesJar
+            }
+        }
+    }
+
+    tasks.register('mapper', JavaExec) {
+        group = 'common'
+        classpath = sourceSets.main.runtimeClasspath
+        mainClass = 'org.oh.common.util.CliMapperUtil'
+    }
+
+    test {
+        useJUnitPlatform()
+        testLogging {
+            outputs.upToDateWhen { false }
+            showStandardStreams = true
+            showCauses = true
+            showExceptions = true
+            showStackTraces = true
+            exceptionFormat = 'full'
+        }
+    }
+}

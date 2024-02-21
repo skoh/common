@@ -1,0 +1,27 @@
+### Build ###
+bin/
+out/
+target/
+build/
+.gradle/
+.git/
+
+### AP ###
+db/
+files/
+logs/
+work/
+hazelcast-mc/
+*.pid
+
+### STS ###
+.settings/
+.project
+.classpath
+.factorypath
+
+### IntelliJ ###
+.idea/
+*.iml
+*.ipr
+*.iws

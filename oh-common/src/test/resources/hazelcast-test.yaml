@@ -1,0 +1,8 @@
+hazelcast:
+  cluster-name: oh-common
+  network:
+    port:
+      port: 15701
+    join:
+      auto-detection:
+        enabled: false

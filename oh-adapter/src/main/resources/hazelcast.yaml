@@ -1,0 +1,6 @@
+hazelcast:
+  cluster-name: oh-adapter
+  network:
+    join:
+      auto-detection:
+        enabled: false

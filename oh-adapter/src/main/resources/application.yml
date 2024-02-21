@@ -1,0 +1,93 @@
+server:
+  shutdown: graceful
+  error:
+    include-message: always
+    include-stacktrace: never
+#  port: 8080
+  servlet:
+    encoding.force: true
+  tomcat:
+    additional-tld-skip-patterns: "*.jar"
+    basedir: ${app.logs.basedir}
+    accesslog:
+      enabled: true
+      directory: ${app.logs.path}
+      prefix: ${spring.config.name}_access
+      pattern: "%{yyyy-MM-dd HH:mm:ss.SSS}t %h \"%r\" %s (%D ms)"
+      max-days: ${logging.logback.rollingpolicy.max-history}
+      condition-unless: noAccessLog
+    threads.max: 200
+    use-relative-redirects: true
+    remoteip:
+      remote-ip-header: x-forwarded-for
+      protocol-header: x-forwarded-proto
+
+spring:
+  config.name: app
+  main.banner-mode: off
+  devtools.restart.enabled: false
+  pid:
+    file: ${spring.config.name}.pid
+    fail-on-write-error: true
+  jackson:
+    mapper.DEFAULT_VIEW_INCLUSION: true
+    deserialization.FAIL_ON_UNKNOWN_PROPERTIES: false
+    default-property-inclusion: NON_NULL
+  profiles.active: local
+  task:
+    execution.pool:
+      max-size: 20
+    scheduling.pool.size: 10
+  autoconfigure.exclude:
+    - org.springframework.boot.autoconfigure.hazelcast.HazelcastAutoConfiguration
+    - org.springframework.boot.autoconfigure.hazelcast.HazelcastJpaDependencyAutoConfiguration
+    - org.springframework.boot.autoconfigure.session.SessionAutoConfiguration
+
+    - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+    - org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration
+
+    - org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration
+    - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+
+    - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+
+logging:
+  file:
+    name: ${app.logs.full-path}/${spring.config.name}.log
+  logback:
+    rollingpolicy:
+      max-file-size: 300MB
+      max-history: 30
+      total-size-cap: 10GB
+      file-name-pattern: ${app.logs.full-path}/${spring.config.name}_%d{yyyy-MM-dd}_%i.log
+  pattern:
+    console: "%d %-5p [%t] %M\\(%F:%L\\) %m%n"
+    file: ${logging.pattern.console}
+  level:
+    org.oh: debug
+
+common:
+  logs:
+    properties: true
+    beans: true
+
+##### 어댑터 관리
+adapter:
+  ### 메인 클래스(AdapterApplication) 실행 여부 (기본값: false)
+  enabled: true
+
+  ### EAI 연계 정보
+  eai:
+    host: localhost
+    port: 80
+    name: APBK
+    group: Application_CG
+    waiting-ms: 5_000
+    repeat-times: 3
+    repeat-sleep-ms: 5_000
+
+app:
+  logs:
+    basedir: .
+    path: logs
+    full-path: ${app.logs.basedir}/${app.logs.path}

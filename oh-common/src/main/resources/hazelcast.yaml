@@ -1,0 +1,46 @@
+##### 설정 매뉴얼
+# https://docs.hazelcast.com/imdg/4.1/configuration/configuring-declaratively
+# https://github.com/hazelcast/hazelcast/blob/master/hazelcast/src/main/resources/hazelcast-config-4.1.xsd
+
+##### 세션/캐시/메모리/파일 등 서버 이중화 관리
+hazelcast:
+  cluster-name: oh-common
+  network:
+#    port:
+#      port: 5701
+    join:
+      ### 로컬 개발용
+      auto-detection:
+        enabled: false
+#      multicast:
+#        multicast-group: 224.2.2.3
+#        multicast-port: 54327
+      ### 운영 서버용
+      tcp-ip:
+#        enabled: true
+        member-list:
+          - 127.0.0.1:5701
+          - 127.0.0.2:5701
+  map:
+    default:
+      eviction:
+        eviction-policy: LFU
+        size: 10000
+      time-to-live-seconds: 300
+    cache*:
+      eviction:
+        eviction-policy: LFU
+        size: 10000
+      time-to-live-seconds: 60
+    schedule:
+      eviction:
+        eviction-policy: LFU
+        size: 100
+#    files:
+#      eviction:
+#        eviction-policy: LFU
+#        size: 100
+#      time-to-live-seconds: 10
+#  management-center:
+#    trusted-interfaces:
+#      - 127.0.0.1

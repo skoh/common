@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS ds_common;
+CREATE DATABASE ds_common
+    DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>oh-adapter</artifactId>
+    <version>${revision}</version>
+    <packaging>jar</packaging>
+    <description>oh-adapter project</description>
+
+    <parent>
+        <artifactId>did</artifactId>
+        <groupId>org.oh</groupId>
+        <version>${revision}</version>
+        <relativePath>../../did/pom.xml</relativePath>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.oh</groupId>
+            <artifactId>oh-common</artifactId>
+            <version>${oh-common.version}</version>
+            <scope>system</scope>
+            <systemPath>${root.path}/did/lib/oh-common-${oh-common.version}.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>org.oh</groupId>
+            <artifactId>client</artifactId>
+            <version>61</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/client-61.jar</systemPath>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>org/oh/*Application.class</exclude>
+                        <exclude>application*.yml</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <doclint>none</doclint>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadoc</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

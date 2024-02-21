@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="{=namespace}">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO {=tableName} (
+        <trim prefixOverrides=",">
+            {=#allColumns}
+            <if test="{=value} != null">
+                , {=key}
+            </if>
+            {=/allColumns}
+        </trim>
+        ) VALUES (
+        <trim prefixOverrides=",">
+            {=#allColumns}
+            <if test="{=value} != null">
+                , #{{=value}}
+            </if>
+            {=/allColumns}
+        </trim>
+        )
+    </insert>
+
+    <select id="find" resultType="{=className}">
+        <include refid="org.oh.common.mapper.CommonMapper.page_top"/>
+        <include refid="{=namespace}.find"/>
+        <if test="order_by != null">
+            ORDER BY ${order_by}
+        </if>
+        <include refid="org.oh.common.mapper.CommonMapper.page_bottom"/>
+    </select>
+
+    <select id="count" resultType="long">
+        <include refid="org.oh.common.mapper.CommonMapper.count_top"/>
+        FROM (
+        <include refid="{=namespace}.find"/>
+        ) a
+    </select>
+
+    <update id="update">
+        UPDATE {=tableName}
+        <set>
+            {=#columns}
+            <if test="{=value} != null">
+                {=key} = #{{=value}},
+            </if>
+            {=/columns}
+        </set>
+        <where>
+            {=#idColumn}
+            <if test="{=value} != null">
+                AND {=key} = #{{=value}}
+            </if>
+            {=/idColumn}
+        </where>
+    </update>
+
+    <delete id="delete">
+        DELETE FROM {=tableName}
+        <include refid="where"/>
+    </delete>
+
+    <sql id="find">
+        SELECT *
+        FROM {=tableName}
+        <include refid="where"/>
+    </sql>
+
+    <sql id="where">
+        <where>
+            {=#allColumns}
+            <if test="{=value} != null">
+                AND {=key} = #{{=value}}
+            </if>
+            {=/allColumns}
+        </where>
+    </sql>
+
+    <!-- /////////////////////////////////////////////////////////////////////////// -->
+
+</mapper>

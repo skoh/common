@@ -1,0 +1,14 @@
+spring:
+#  h2.console.enabled: false
+  datasource:
+#    driver-class-name: org.mariadb.jdbc.Driver
+#    url: jdbc:mariadb://localhost:3306/ds_common?rewriteBatchedStatements=true
+#    username: common
+#    password: 1234567890
+  jpa:
+    hibernate.ddl-auto: update
+#    properties.hibernate:
+#      dialect: org.hibernate.dialect.MariaDBDialect
+
+app:
+#  mapper.vendor: mysql

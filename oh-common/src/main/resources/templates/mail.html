@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>mail</title>
+</head>
+<body>
+<div style="width: 80%;margin: 0 auto;font-family: Roboto,Helvetica Neue,sans-serif;">
+    <div style="overflow: hidden;display: block;border-bottom: 5px solid #18d26a;">
+        <h3 style="float: left;margin-left: 30px;margin-bottom: 10px;color: #848484;font-size: 20px;font-weight: 600;"
+            th:text="${title}"></h3>
+        <div style="float: right;margin-right: 30px;padding-top: 30px;color: #848484;font-size: 12px;font-weight: 700;"
+             th:text="${date}"></div>
+    </div>
+    <div style="background: #FAFAF9;margin-top: -6px;">
+        <div style="overflow: hidden;display: block;padding-bottom: 50px;margin: 5px auto;color: #848484;width: 90%;border-top: none;padding: 15px 0 15px 10px;font-size: 15px;"
+             th:text="${subject}"></div>
+        <div style="overflow: hidden;display: block;padding-top: 10px;margin: 5px auto;color: #848484;width: 90%;border-top: 1px #BDBDBD solid;">
+            <pre style="word-wrap: break-word; white-space: pre-wrap;">
+<span style="font-size: 15px; font-weight: bold" th:text="${content.title}"></span>
+<th:block th:if="${content[body]} != null" th:text="${content.body}"></th:block>
+<a target="content" th:if="${content[link]} != null" th:href="${content.link}" th:text="${content.link}"></a>
+            </pre>
+        </div>
+        <div style="overflow: hidden;display: block;padding-top: 10px;margin: 5px auto;color: #848484;width: 90%;border-top: 1px #BDBDBD solid;">
+        </div>
+    </div>
+</div>
+</body>
+</html>
