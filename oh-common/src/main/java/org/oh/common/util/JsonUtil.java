@@ -16,6 +16,7 @@
 
 package org.oh.common.util;
 
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.oh.common.annotation.ExcludeLogging;
 import org.oh.common.exception.CommonError;
 import org.oh.common.exception.CommonException;
@@ -72,6 +73,7 @@ public final class JsonUtil {
 	 */
 	public static final ObjectMapper OBJECT_MAPPER = JsonMapper.builder()
 			.enable(MapperFeature.DEFAULT_VIEW_INCLUSION)
+			.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false)
 			.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
 			.serializationInclusion(JsonInclude.Include.NON_NULL)
 			.build();

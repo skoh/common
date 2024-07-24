@@ -32,7 +32,7 @@ subprojects {
 
     repositories {
         // https://search.maven.org
-//        mavenCentral()
+        mavenCentral()
 
         // https://mvnrepository.com/repos/jcenter
 //        jcenter()
@@ -41,14 +41,14 @@ subprojects {
 //            url 'https://repo1.maven.org/maven2'
 //        }
 
-        maven {
-            url "${NEXUS_URL}/maven-public"
-            credentials {
-                username USER
-                password PASSWORD
-            }
-            allowInsecureProtocol = true
-        }
+//        maven {
+//            url "${NEXUS_URL}/maven-public"
+//            credentials {
+//                username USER
+//                password PASSWORD
+//            }
+//            allowInsecureProtocol = true
+//        }
     }
 
 //    javadoc {
@@ -93,7 +93,8 @@ subprojects {
         implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv'
         implementation 'com.github.wnameless.json:json-flattener:0.16.0'
         implementation 'org.imgscalr:imgscalr-lib:4.2'
-        implementation 'org.bouncycastle:bcpkix-jdk15on:1.63'
+        implementation 'org.bouncycastle:bcpkix-jdk18on:1.77'
+//        implementation 'org.assertj:assertj-core'
 
         implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
         runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'

@@ -40,16 +40,25 @@ import org.oh.common.util.ExceptionUtil;
 import org.oh.common.util.Logging;
 import org.oh.common.util.SpringUtil;
 import org.oh.common.util.StringUtil;
+import org.springframework.aop.Advisor;
+import org.springframework.aop.aspectj.AspectJExpressionPointcut;
+import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionManager;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.interceptor.MatchAlwaysTransactionAttributeSource;
+import org.springframework.transaction.interceptor.RollbackRuleAttribute;
+import org.springframework.transaction.interceptor.RuleBasedTransactionAttribute;
+import org.springframework.transaction.interceptor.TransactionInterceptor;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import javax.sql.DataSource;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -59,6 +68,7 @@ import java.util.stream.Stream;
  * AOP 초기화
  */
 @Slf4j
+@Configuration
 public class AopConfig {
 	/**
 	 * 해당 인자 목록 중에 선택한 인자 목록만 반환
@@ -107,6 +117,23 @@ public class AopConfig {
 				logging = defaultLogging;
 		}
 		return logging;
+	}
+
+	//	@Bean
+	public Advisor transactionAdvisor(TransactionManager transactionManager) {
+		AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
+		pointcut.setExpression("execution(* org.oh.*.controller..*(..))");
+		return new DefaultPointcutAdvisor(pointcut, transactionAdvice(transactionManager));
+	}
+
+	//	@Bean
+	public TransactionInterceptor transactionAdvice(TransactionManager transactionManager) {
+		MatchAlwaysTransactionAttributeSource source = new MatchAlwaysTransactionAttributeSource();
+		RuleBasedTransactionAttribute transactionAttribute = new RuleBasedTransactionAttribute();
+		transactionAttribute.setRollbackRules(Collections.singletonList(new RollbackRuleAttribute(Exception.class)));
+		transactionAttribute.setName("*");
+		source.setTransactionAttribute(transactionAttribute);
+		return new TransactionInterceptor(transactionManager, source);
 	}
 
 	/**
