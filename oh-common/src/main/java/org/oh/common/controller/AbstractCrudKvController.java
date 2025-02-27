@@ -55,7 +55,7 @@ public abstract class AbstractCrudKvController<T extends Model<ID>, ID extends S
 	 * @return 페이징 목록
 	 */
 	@Operation(summary = "페이지별 항목 조회")
-	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
+//	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
 	@JsonView(CommonModel.Default.class)
 	@GetMapping("page")
 	public Page<T> findPage(Paging page) {
@@ -70,7 +70,7 @@ public abstract class AbstractCrudKvController<T extends Model<ID>, ID extends S
 	 * @return 객체 목록
 	 */
 	@Operation(summary = "TopN 항목 조회")
-	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
+//	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
 	@JsonView(CommonModel.Default.class)
 	@GetMapping("limit")
 	public List<T> findAll(@Parameter(description = "페이지 갯수", example = "10")
@@ -85,7 +85,7 @@ public abstract class AbstractCrudKvController<T extends Model<ID>, ID extends S
 	 * @return 객체 건수
 	 */
 	@Operation(summary = "항목 건수 조회")
-	@ResultLogging(result = true)
+//	@ResultLogging(result = true)
 	@GetMapping("count")
 	public long count() {
 		return service.count();
@@ -101,7 +101,7 @@ public abstract class AbstractCrudKvController<T extends Model<ID>, ID extends S
 	 */
 	@ResponseBody
 	@Operation(summary = "CVS 다운로드")
-	@ResultLogging
+//	@ResultLogging
 	@GetMapping("cvs")
 	public ResponseEntity<Resource> cvs(Cvs cvs, Sorting sort,
 										@Parameter(description = "캐릿터셋명", example = "UTF-8")

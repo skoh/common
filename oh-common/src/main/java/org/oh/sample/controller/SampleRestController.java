@@ -43,7 +43,7 @@ import org.springframework.web.bind.annotation.RestController;
 @ConditionalOnProperty(value = "enabled", prefix = SampleService.PROPERTY_PREFIX, havingValue = "true")
 public class SampleRestController
 		extends AbstractCrudKvController<Sample, Long> {
-	public static final String PATH = "/v1/" + Sample.NAME_SPACE + "/dg";
+	public static final String PATH = VERSION_1 + "/" + Sample.NAME_SPACE + "/dg";
 
 	protected SampleRestController(SampleService service) {
 		super(service);

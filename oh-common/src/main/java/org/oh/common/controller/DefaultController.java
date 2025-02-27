@@ -16,22 +16,23 @@
 
 package org.oh.common.controller;
 
-import org.oh.common.model.validate.ValidationGroup;
 import org.oh.common.util.SpringUtil;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.servlet.http.HttpServletRequest;
 
 import java.util.Optional;
 
-@CrossOrigin(maxAge = 3600)
-@Validated(ValidationGroup.Api.class)
+//@CrossOrigin(maxAge = 3600)
 public interface DefaultController {
+	/**
+	 * api version
+	 */
+	String VERSION_1 = "/v1";
+
 	/**
 	 * JSON 데이터의 파라미터명
 	 */

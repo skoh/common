@@ -43,7 +43,7 @@ import org.springframework.web.multipart.MultipartFile;
 @ConditionalOnProperty(value = "enabled", prefix = SampleService.PROPERTY_PREFIX, havingValue = "true")
 public class FilesDbRestController
 		extends AbstractFilesRestController<Files> {
-	public static final String PATH = "/v1/files";
+	public static final String PATH = VERSION_1 + "/files";
 
 	protected final FilesDbService filesDbService;
 

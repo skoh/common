@@ -50,14 +50,14 @@ import java.util.Optional;
 @RestController
 @RequestMapping(CommonRestController.PATH)
 @ConditionalOnProperty(value = "enabled", prefix = SecurityConfig.SECURITY_API_PREFIX, havingValue = "true")
-public class CommonRestController {
-	//		implements DefaultController {
-	public static final String PATH = "/v1/common";
+public class CommonRestController
+		implements DefaultController {
+	public static final String PATH = VERSION_1 + "/common";
 
 	protected final CommonService service;
 
 	@Operation(summary = "1. 로그인(토큰 발급)")
-	@ResultLogging(result = true)
+//	@ResultLogging(result = true)
 	@PostMapping(DefaultController.LOGIN_PAGE)
 	public ResponseEntity<String> login(@RequestBody Login login) {
 		String token = service.login(login);
@@ -76,7 +76,7 @@ public class CommonRestController {
 		//		@PreAuthorize("hasAnyRole('" + Role.ROLE_USER.getValue() + "')")
 //		@Secured({"ROLE_ADMIN", "ROLE_MANAGER", "ROLE_USER"})
 		@Operation(summary = "2. USER 권한 테스트")
-		@ResultLogging(result = true)
+//		@ResultLogging(result = true)
 		@GetMapping("user")
 		public ResponseEntity<String> user(HttpSession session) {
 			int count = Optional.ofNullable(session.getAttribute("count"))
@@ -90,7 +90,7 @@ public class CommonRestController {
 		@PreAuthorize("hasAnyRole('MANAGER')")
 //		@Secured({"ROLE_ADMIN", "ROLE_MANAGER"})
 		@Operation(summary = "3. MANAGER 권한 테스트")
-		@ResultLogging(result = true)
+//		@ResultLogging(result = true)
 		@GetMapping("manager")
 		public ResponseEntity<String> manager() {
 			return ResponseEntity.ok(HttpResponse.MESSAGE_SUCCESS);
@@ -99,7 +99,7 @@ public class CommonRestController {
 		//		@PreAuthorize("hasAnyRole('ADMIN')")
 //		@Secured({"ROLE_ADMIN"})
 		@Operation(summary = "4. ADMIN 권한 테스트")
-		@ResultLogging(result = true)
+//		@ResultLogging(result = true)
 		@GetMapping("admin")
 		public ResponseEntity<String> admin() {
 			return ResponseEntity.ok(HttpResponse.MESSAGE_SUCCESS);

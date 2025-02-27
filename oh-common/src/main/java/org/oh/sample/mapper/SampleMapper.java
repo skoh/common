@@ -34,6 +34,6 @@ public interface SampleMapper
 	 * @param params 파라미터
 	 * @return 현황 목록
 	 */
-	@ResultLogging
+//	@ResultLogging
 	List<Map<String, Object>> stats(Map<String, Object> params);
 }

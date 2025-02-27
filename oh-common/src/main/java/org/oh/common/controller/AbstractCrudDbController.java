@@ -55,7 +55,7 @@ public abstract class AbstractCrudDbController<T extends Model<ID>, ID>
 	 * @param entities 객체 목록
 	 */
 	@Override
-	@ResultLogging(json = true)
+//	@ResultLogging(json = true)
 	public void deleteAll(@RequestBody List<T> entities) {
 		service.deleteAll(entities);
 	}
@@ -68,7 +68,7 @@ public abstract class AbstractCrudDbController<T extends Model<ID>, ID>
 	 * @return 객체 목록
 	 */
 	@Operation(summary = "다중 항목 조회")
-	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
+//	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
 	@JsonView(CommonModel.Default.class)
 	@GetMapping
 	public List<T> findAll(T entity, Sorting sort) {
@@ -90,7 +90,7 @@ public abstract class AbstractCrudDbController<T extends Model<ID>, ID>
 	 * @return 페이징 목록
 	 */
 	@Operation(summary = "페이지별 항목 조회")
-	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
+//	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
 	@JsonView(CommonModel.Default.class)
 	@GetMapping("page")
 	public Page<T> findPage(T entity, Paging page) {
@@ -114,7 +114,7 @@ public abstract class AbstractCrudDbController<T extends Model<ID>, ID>
 	 * @return 객체 목록
 	 */
 	@Operation(summary = "TopN 항목 조회")
-	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
+//	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
 	@JsonView(CommonModel.Default.class)
 	@GetMapping("limit")
 	public List<T> findAll(T entity,
@@ -138,7 +138,7 @@ public abstract class AbstractCrudDbController<T extends Model<ID>, ID>
 	 * @return 검색 건수
 	 */
 	@Operation(summary = "항목 건수 조회")
-	@ResultLogging(result = true, json = true)
+//	@ResultLogging(result = true, json = true)
 	@GetMapping("count")
 	public long count(T entity) {
 		entity.convert();
@@ -157,7 +157,7 @@ public abstract class AbstractCrudDbController<T extends Model<ID>, ID>
 	 */
 	@ResponseBody
 	@Operation(summary = "CVS 다운로드")
-	@ResultLogging
+//	@ResultLogging
 	@GetMapping("cvs")
 	public ResponseEntity<Resource> cvs(Cvs cvs, T entity, Sorting sort,
 										@Parameter(description = "캐릿터셋명", example = "UTF-8")
@@ -173,7 +173,7 @@ public abstract class AbstractCrudDbController<T extends Model<ID>, ID>
 	 * @return 존재 여부
 	 */
 	@Operation(summary = "항목 존재 여부 조회")
-	@ResultLogging(result = true, json = true)
+//	@ResultLogging(result = true, json = true)
 	@GetMapping("exists")
 	public boolean exists(T entity) {
 		entity.convert();
@@ -187,7 +187,7 @@ public abstract class AbstractCrudDbController<T extends Model<ID>, ID>
 	 * @param entity 검색 조건
 	 */
 	@Operation(summary = "다중 항목 삭제")
-	@ResultLogging(json = true)
+//	@ResultLogging(json = true)
 	@DeleteMapping
 	public void delete(@RequestBody T entity) {
 		service.delete(entity);

@@ -44,7 +44,7 @@ import java.util.List;
 @ConditionalOnProperty(value = "enabled", prefix = SampleService.PROPERTY_PREFIX, havingValue = "true")
 public class SampleDbRestController
 		extends AbstractCrudDbController<Sample, Long> {
-	public static final String PATH = "/v1/" + Sample.NAME_SPACE;
+	public static final String PATH = VERSION_1 + "/" + Sample.NAME_SPACE;
 
 	protected final SampleDbService service;
 
@@ -86,21 +86,21 @@ public class SampleDbRestController
 //	}
 
 	@Operation(summary = "검색")
-	@ResultLogging
+//	@ResultLogging
 	@GetMapping("search")
 	public List<Sample> search(Sample entity, StatsParams params, Sorting sort) {
 		return service.search(entity, params, sort);
 	}
 
 	@Operation(summary = "페이지별 검색")
-	@ResultLogging
+//	@ResultLogging
 	@GetMapping("search/page")
 	public Page<Sample> search(Sample entity, StatsParams params, Paging page) {
 		return service.search(entity, params, page.pageable());
 	}
 
 	@Operation(summary = "통계")
-	@ResultLogging
+//	@ResultLogging
 	@GetMapping("stats")
 	public List<StatsResult> stats(Sample entity, StatsParams params, Sorting sort) {
 		return service.stats(entity, params, sort);

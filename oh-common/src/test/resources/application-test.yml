@@ -24,6 +24,9 @@ common:
         - /v*/sample/**
         - /v*/sample/dg/**
         - /v*/test/**
+  logs:
+    api:
+      response-enabled: true
 
 app:
 #  mapper.vendor: mysql

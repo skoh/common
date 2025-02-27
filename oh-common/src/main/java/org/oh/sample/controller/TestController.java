@@ -19,6 +19,7 @@ package org.oh.sample.controller;
 import org.oh.common.annotation.ResultLogging;
 import org.oh.common.config.DataGridConfig;
 import org.oh.common.config.LoggingConfig;
+import org.oh.common.controller.DefaultController;
 import org.oh.common.exception.CommonException;
 import org.oh.common.util.DataGridUtil;
 import org.oh.common.util.JsonUtil;
@@ -58,9 +59,9 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping(TestController.PATH)
 @ConditionalOnProperty(value = "enabled", prefix = SampleService.PROPERTY_PREFIX, havingValue = "true")
-public class TestController {
-	//		implements DefaultController {
-	public static final String PATH = "/v1/test";
+public class TestController
+		implements DefaultController {
+	public static final String PATH = VERSION_1 + "/test";
 
 	protected final HazelcastInstance hazelcast;
 	protected final DataGridUtil hazelcastUtil;
@@ -77,20 +78,20 @@ public class TestController {
 		this.sessionRepository = sessionRepository;
 	}
 
-	@ResultLogging
+//	@ResultLogging
 	@GetMapping("jsp")
 	public String jsp() {
 		return "test";
 	}
 
-	@ResultLogging
+//	@ResultLogging
 	@GetMapping("templete")
 	public String templete(Model model) {
 		model.addAttribute("test", "테스트");
 		return WebUtil.getTemplatesName() + "test";
 	}
 
-	@ResultLogging
+//	@ResultLogging
 	@GetMapping("error")
 	public String error() {
 		throw new CommonException("test", new Exception("test2"));
@@ -98,7 +99,7 @@ public class TestController {
 
 	///////////////////////////////////////////////////////////////////////////
 
-	@ResultLogging(result = true)
+//	@ResultLogging(result = true)
 	@Operation(summary = "단일 항목 저장")
 	@PostMapping
 	@ResponseBody
@@ -106,7 +107,7 @@ public class TestController {
 		return service.insert(entity);
 	}
 
-	@ResultLogging(result = true)
+//	@ResultLogging(result = true)
 	@Operation(summary = "단일 항목 조회")
 	@GetMapping("{id}")
 	@ResponseBody
@@ -115,7 +116,7 @@ public class TestController {
 		return service.findById(id);
 	}
 
-	@ResultLogging
+//	@ResultLogging
 	@Operation(summary = "단일 항목 삭제")
 	@DeleteMapping("{id}")
 	@ResponseBody
@@ -126,7 +127,7 @@ public class TestController {
 
 	///////////////////////////////////////////////////////////////////////////
 
-	@ResultLogging(indexesOfArgs = {0, 1})
+//	@ResultLogging(indexesOfArgs = {0, 1})
 	@Operation(summary = "세션 저장")
 	@PostMapping("session/{name}")
 	@ResponseBody
@@ -137,7 +138,7 @@ public class TestController {
 		session.setAttribute(name, entity); //NOSONAR 테스트 코드로 사용 안함
 	}
 
-	@ResultLogging(result = true, indexesOfArgs = {0})
+//	@ResultLogging(result = true, indexesOfArgs = {0})
 	@Operation(summary = "세션 조회")
 	@GetMapping("session/{name}")
 	@ResponseBody
@@ -170,7 +171,7 @@ public class TestController {
 		return entity;
 	}
 
-	@ResultLogging(result = true, indexesOfArgs = {0})
+//	@ResultLogging(result = true, indexesOfArgs = {0})
 	@Operation(summary = "세션 삭제")
 	@DeleteMapping("session/{name}")
 	@ResponseBody

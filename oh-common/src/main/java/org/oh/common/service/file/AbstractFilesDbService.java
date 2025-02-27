@@ -130,7 +130,7 @@ public abstract class AbstractFilesDbService<T extends AbstractFiles>
 	}
 
 	@Override
-	@ResultLogging
+//	@ResultLogging
 	@Transactional
 	public void deleteAll(Collection<T> entities) {
 		Collection<T> entitiesTemp = entities.stream()
@@ -141,7 +141,7 @@ public abstract class AbstractFilesDbService<T extends AbstractFiles>
 	}
 
 	@Override
-	@ResultLogging
+//	@ResultLogging
 	@Transactional
 	public void deleteById(Long id) {
 		T entity = self.findById(id);

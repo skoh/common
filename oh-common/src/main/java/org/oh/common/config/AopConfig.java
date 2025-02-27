@@ -224,7 +224,7 @@ public class AopConfig {
 
 			try {
 				long processTime = System.currentTimeMillis() - startTime;
-				time = "time: " + StringUtil.toString(StringUtil.toStringTime(processTime));
+				time = "time: " + StringUtil.toStringTime(processTime);
 				sResult = anno.result() ? "result: " + StringUtil.toString(result, anno.json(), anno.jsonView()) : "";
 			} catch (Exception e) {
 				log.warn(ExceptionUtil.getMessageAndType(e), e);

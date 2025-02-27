@@ -44,7 +44,7 @@ import org.springframework.web.bind.annotation.RestController;
 @ConditionalOnProperty(value = "enabled", prefix = DataDbService.PROPERTY_PREFIX, havingValue = "true")
 public class DataDbRestController
 		extends AbstractCrudDbController<DataDb, String> {
-	public static final String PATH = "/v1/" + DataDb.NAME_SPACE;
+	public static final String PATH = VERSION_1 + "/" + DataDb.NAME_SPACE;
 
 	protected DataDbRestController(@Qualifier("dataDbService") DataDbService service) {
 		super(service);

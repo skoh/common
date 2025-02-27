@@ -43,7 +43,7 @@ import java.util.Optional;
  */
 public abstract class AbstractFilesRestController<T extends AbstractFiles>
 		extends AbstractCrudDbController<T, Long> {
-	public static final String PATH = "/v1/" + AbstractFiles.NAME_SPACE;
+	public static final String PATH = VERSION_1 + "/" + AbstractFiles.NAME_SPACE;
 
 	protected AbstractFilesRestController(AbstractFilesDbService<T> service) {
 		super(service);
@@ -59,7 +59,7 @@ public abstract class AbstractFilesRestController<T extends AbstractFiles>
 	 */
 	@ResponseBody
 	@Operation(summary = "파일 미리보기")
-	@ResultLogging
+//	@ResultLogging
 	@GetMapping({"view/{id}", "view/{id}/{sizeType}"})
 	public ResponseEntity<Resource> view(@Parameter(description = "아이디")
 										 @PathVariable Long id,
@@ -80,7 +80,7 @@ public abstract class AbstractFilesRestController<T extends AbstractFiles>
 	 */
 	@ResponseBody
 	@Operation(summary = "파일 다운로드")
-	@ResultLogging
+//	@ResultLogging
 	@GetMapping({"down/{id}", "down/{id}/{sizeType}"})
 	public ResponseEntity<Resource> down(@Parameter(description = "아이디")
 										 @PathVariable Long id,

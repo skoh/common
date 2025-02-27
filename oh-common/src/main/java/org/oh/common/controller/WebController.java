@@ -42,8 +42,8 @@ public class WebController {
 	 */
 	@Controller
 	@ConditionalOnProperty(value = "enabled", prefix = CommonConfig.COMMON_API_PREFIX + ".spa", havingValue = "true")
-	public static class SpaController {
-		//			implements DefaultController {
+	public static class SpaController
+			implements DefaultController {
 		@GetMapping("/{path:[^\\.]*}")
 		public String redirect() {
 			return "forward:/";

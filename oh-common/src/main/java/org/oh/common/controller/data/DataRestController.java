@@ -44,7 +44,7 @@ import org.springframework.web.bind.annotation.RestController;
 @ConditionalOnProperty(value = "enabled", prefix = DataService.PROPERTY_PREFIX, havingValue = "true")
 public class DataRestController
 		extends AbstractCrudKvController<Data, String> {
-	public static final String PATH = "/v1/" + Data.NAME_SPACE;
+	public static final String PATH = VERSION_1 + "/" + Data.NAME_SPACE;
 
 	protected DataRestController(@Qualifier("dataService") DataService service) {
 		super(service);

@@ -35,7 +35,6 @@ server:
       protocol-header: x-forwarded-proto
 
 ##### 스프링 관리
-#debug: true
 spring:
   main:
 #    web-application-type: none
@@ -51,7 +50,7 @@ spring:
     default-property-inclusion: NON_NULL
 
   ### 실행 환경 관리 (local:로컬, test:테스트, beta/dev:개발, stage:김증, prod:운영 서버)
-  profiles.active: local
+#  profiles.active: local
 
   ### 쓰레드/스케쥴러 풀 관리
   task:
@@ -65,13 +64,14 @@ spring:
   ### DB 관리
 #  sql.init.mode: always
   datasource:
-    driver-class-name: org.h2.Driver
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+#    driver-class-name: org.h2.Driver
 #    driver-class-name: org.mariadb.jdbc.Driver
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 #    driver-class-name: org.postgresql.Driver
 
 #    url: jdbc:h2:./db/ds_common
-    url: jdbc:h2:tcp://localhost/./db/ds_common
+    url: jdbc:log4jdbc:h2:tcp://localhost/./db/ds_common
 #    url: jdbc:mariadb://localhost:3306/ds_common?rewriteBatchedStatements=true
 #    url: jdbc:mariadb[:sequential/loadbalance]://localhost:3306,127.0.0.1:3306/ds_common?rewriteBatchedStatements=true
 #    url: jdbc:mysql://localhost:3306/ds_common?rewriteBatchedStatements=true&autoReconnect=true&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
@@ -196,17 +196,27 @@ logging:
     console: "%d %-5p [%t] %M\\(%F:%L\\) %m%n"
     file: ${logging.pattern.console}
   level:
-    org.hibernate.SQL: debug
-    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    jdbc.audit: off
+    jdbc.connection: off
+    jdbc.sqlonly: off
+    jdbc.sqltiming: INFO
+    jdbc.resultset: off
+    jdbc.resultsettable: info
+#    org.hibernate.SQL: debug
+#    org.hibernate.type.descriptor.sql.BasicBinder: trace
 #    org.hibernate.resource.jdbc.internal.ResourceRegistryStandardImpl: trace
     org.springframework.jdbc.datasource.init.ScriptUtils: debug
 #    org.springframework.cache: trace
 #    org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver: error
+
     # -Dcom.zaxxer.hikari.housekeeping.periodMs=1000
 #    com.zaxxer.hikari: debug
 #    org.apache.http.impl.conn.PoolingHttpClientConnectionManager: debug
     com.hazelcast.internal.diagnostics.HealthMonitor: warn
+
     org.oh: debug
+    org.oh.common.mapper: info
+    org.oh.sample.mapper: info
 
 ##### SQL 매퍼 관리
 mybatis:
@@ -237,7 +247,14 @@ common:
     ### 모든 시스템 설정 출력 여부 (기본값: false)
     properties: true
     ### 모든 빈 정보 출력 여부 (기본값: false)
-    beans: true
+#    beans: true
+    api:
+      # API 정보 로깅의 최대 크기 (기본값: 50 bytes)
+      max-size: 10_000
+      # API 요청 정보 로깅 여부
+      request-enabled: true
+      # API 응답 정보 로깅 여부
+#      response-enabled: true
 
   ### Apache-Tomcat AJP 연계
   tomcat.ajp:

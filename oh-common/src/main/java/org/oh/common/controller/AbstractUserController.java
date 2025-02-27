@@ -45,7 +45,7 @@ import java.util.List;
  */
 public abstract class AbstractUserController<T extends AbstractUser>
 		extends AbstractCrudDbController<T, String> {
-	public static final String PATH = "/v1/" + AbstractUser.NAME_SPACE;
+	public static final String PATH = VERSION_1 + "/" + AbstractUser.NAME_SPACE;
 
 	protected AbstractUserController(CrudDbService<T, String> service) {
 		super(service);
@@ -53,14 +53,14 @@ public abstract class AbstractUserController<T extends AbstractUser>
 
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@Override
-	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
+//	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
 	public Page<T> findPage(T entity, Paging page) {
 		return super.findPage(entity, page);
 	}
 
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@Override
-	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
+//	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
 	public List<T> findAll(T entity,
 						   @Parameter(description = "페이지 갯수", example = "10")
 						   @RequestParam int lsize,
@@ -70,14 +70,14 @@ public abstract class AbstractUserController<T extends AbstractUser>
 
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@Override
-	@ResultLogging(result = true, json = true)
+//	@ResultLogging(result = true, json = true)
 	public long count(T entity) {
 		return super.count(entity);
 	}
 
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@Override
-	@ResultLogging
+//	@ResultLogging
 	public ResponseEntity<Resource> cvs(Cvs cvs, T entity, Sorting sort,
 										@Parameter(description = "캐릿터셋명", example = "UTF-8")
 										@RequestParam(required = false) String charsetName) {
@@ -86,7 +86,7 @@ public abstract class AbstractUserController<T extends AbstractUser>
 
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@Override
-	@ResultLogging(result = true, json = true)
+//	@ResultLogging(result = true, json = true)
 	public boolean exists(T entity) {
 		return super.exists(entity);
 	}
@@ -94,7 +94,7 @@ public abstract class AbstractUserController<T extends AbstractUser>
 	///////////////////////////////////////////////////////////////////////////
 
 	@Override
-	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
+//	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
 	public T findById(@Parameter(description = "아이디")
 					  @PathVariable String id) {
 		SpringUtil.getLoginUserOrEmpty()
@@ -111,14 +111,14 @@ public abstract class AbstractUserController<T extends AbstractUser>
 	}
 
 	@Override
-	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
+//	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
 	public T update(@RequestBody T entity) {
 		throwForbidden(Collections.singletonList(entity));
 		return super.update(entity);
 	}
 
 	@Override
-	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
+//	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
 	public List<T> update(@RequestBody List<T> entities) {
 		throwForbidden(entities);
 		return super.update(entities);

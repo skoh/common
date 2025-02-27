@@ -164,11 +164,4 @@ public final class ThreadLocalUtil {
 	public interface LocalKey {
 		String name();
 	}
-
-	/**
-	 * 쓰레드 로컬 키 리스트
-	 */
-	public enum ThreadLocalKey
-			implements LocalKey {
-	}
 }

@@ -57,8 +57,8 @@ import java.util.List;
  */
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @Validated(ValidationGroup.Api.class)
-public abstract class AbstractCrudController<T extends Model<ID>, ID> {
-	//		implements DefaultController {
+public abstract class AbstractCrudController<T extends Model<ID>, ID>
+		implements DefaultController {
 	protected final CrudService<T, ID> service;
 
 	/**
@@ -80,7 +80,7 @@ public abstract class AbstractCrudController<T extends Model<ID>, ID> {
 	 * @return 객체
 	 */
 	@Operation(summary = "단일 항목 조회")
-	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
+//	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
 	@JsonView(CommonModel.Default.class)
 	@GetMapping("{id}")
 	public T findById(@Parameter(description = "아이디")
@@ -98,7 +98,7 @@ public abstract class AbstractCrudController<T extends Model<ID>, ID> {
 	 * @return 존재 여부
 	 */
 	@Operation(summary = "항목 존재 여부 조회")
-	@ResultLogging(result = true)
+//	@ResultLogging(result = true)
 	@GetMapping("exists/{id}")
 	public boolean exists(@Parameter(description = "아이디")
 						  @PathVariable ID id) {
@@ -112,7 +112,7 @@ public abstract class AbstractCrudController<T extends Model<ID>, ID> {
 	 * @return 저장 객체
 	 */
 	@Operation(summary = "단일 항목 추가")
-	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
+//	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
 	@JsonView(CommonModel.Default.class)
 	@PostMapping
 	public T insert(@Valid @RequestBody T entity) {
@@ -126,7 +126,7 @@ public abstract class AbstractCrudController<T extends Model<ID>, ID> {
 	 * @return 저장 목록
 	 */
 	@Operation(summary = "다중 항목들 추가")
-	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
+//	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
 	@JsonView(CommonModel.Default.class)
 	@PostMapping("all")
 	public Collection<T> insert(@Valid @RequestBody ValidList<T> entities) {
@@ -140,7 +140,7 @@ public abstract class AbstractCrudController<T extends Model<ID>, ID> {
 	 * @return 저장 객체
 	 */
 	@Operation(summary = "단일 항목 병합")
-	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
+//	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
 	@JsonView(CommonModel.Default.class)
 	@PostMapping("merge")
 	public T merge(@RequestBody T entity) {
@@ -154,7 +154,7 @@ public abstract class AbstractCrudController<T extends Model<ID>, ID> {
 	 * @return 저장 객체
 	 */
 	@Operation(summary = "단일 항목 수정")
-	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
+//	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
 	@JsonView(CommonModel.Default.class)
 	@PutMapping
 	public T update(@RequestBody T entity) {
@@ -168,7 +168,7 @@ public abstract class AbstractCrudController<T extends Model<ID>, ID> {
 	 * @return 저장 목록
 	 */
 	@Operation(summary = "다중 항목들 수정")
-	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
+//	@ResultLogging(result = true, jsonView = CommonModel.Default.class)
 	@JsonView(CommonModel.Default.class)
 	@PutMapping("all")
 	public List<T> update(@RequestBody List<T> entities) {
@@ -181,7 +181,7 @@ public abstract class AbstractCrudController<T extends Model<ID>, ID> {
 	 * @param id 아이디
 	 */
 	@Operation(summary = "단일 항목 삭제")
-	@ResultLogging
+//	@ResultLogging
 	@DeleteMapping("{id}")
 	public void deleteById(@Parameter(description = "아이디")
 						   @PathVariable ID id) {
@@ -194,7 +194,7 @@ public abstract class AbstractCrudController<T extends Model<ID>, ID> {
 	 * @param entities 객체 목록
 	 */
 	@Operation(summary = "다중 항목들 삭제")
-	@ResultLogging(json = true)
+//	@ResultLogging(json = true)
 	@DeleteMapping("all")
 	public void deleteAll(@RequestBody List<T> entities) {
 		service.deleteAll(entities);

@@ -55,21 +55,21 @@ public class SampleMapperRestController
 	}
 
 	@Operation(summary = "검색")
-	@ResultLogging
+//	@ResultLogging
 	@GetMapping("search")
 	public List<Sample> search(Sample entity, StatsParams params, Sorting sort) {
 		return service.search(entity, params, sort);
 	}
 
 	@Operation(summary = "페이지별 검색")
-	@ResultLogging
+//	@ResultLogging
 	@GetMapping("search/page")
 	public Page<Sample> search(Sample entity, StatsParams params, Paging page) {
 		return service.search(entity, params, page);
 	}
 
 	@Operation(summary = "통계")
-	@ResultLogging
+//	@ResultLogging
 	@GetMapping("stats")
 	public List<StatsResult> stats(Sample entity, StatsParams params, Sorting sort) {
 		return service.stats(entity, params, sort);

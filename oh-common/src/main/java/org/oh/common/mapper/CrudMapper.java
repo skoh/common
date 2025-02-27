@@ -35,7 +35,7 @@ public interface CrudMapper<T extends Model<ID>, ID> {
 	 * @param entity 대상 객체
 	 * @return 성공 여부
 	 */
-	@ResultLogging
+//	@ResultLogging
 	boolean insert(T entity);
 
 	/**
@@ -44,7 +44,7 @@ public interface CrudMapper<T extends Model<ID>, ID> {
 	 * @param params 파라미터
 	 * @return 객체 목록
 	 */
-	@ResultLogging
+//	@ResultLogging
 	List<T> find(Map<String, Object> params);
 
 	/**
@@ -53,7 +53,7 @@ public interface CrudMapper<T extends Model<ID>, ID> {
 	 * @param params 파라미터
 	 * @return 검색 건수
 	 */
-	@ResultLogging
+//	@ResultLogging
 	long count(Map<String, Object> params);
 
 	/**
@@ -62,7 +62,7 @@ public interface CrudMapper<T extends Model<ID>, ID> {
 	 * @param params 파라미터
 	 * @return 성공 여부
 	 */
-	@ResultLogging
+//	@ResultLogging
 	boolean update(Map<String, Object> params);
 
 	/**
@@ -71,7 +71,7 @@ public interface CrudMapper<T extends Model<ID>, ID> {
 	 * @param params 파라미터
 	 * @return 객체 목록
 	 */
-	@ResultLogging
+//	@ResultLogging
 	boolean delete(Map<String, Object> params);
 
 	/**
