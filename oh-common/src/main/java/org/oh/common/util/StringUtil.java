@@ -16,12 +16,12 @@
 
 package org.oh.common.util;
 
-import org.oh.common.model.CommonModel;
-import org.oh.common.model.http.HttpResponse;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.oh.common.model.CommonModel;
+import org.oh.common.model.http.HttpResponse;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;

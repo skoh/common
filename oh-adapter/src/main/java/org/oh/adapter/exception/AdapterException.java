@@ -16,11 +16,11 @@
 
 package org.oh.adapter.exception;
 
-import org.oh.common.exception.DefaultException;
-import org.oh.common.exception.Error;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.oh.common.exception.DefaultException;
+import org.oh.common.exception.Error;
 import org.springframework.http.HttpStatus;
 
 public class AdapterException

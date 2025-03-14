@@ -16,11 +16,11 @@
 
 package org.oh.common.model;
 
-import org.oh.common.exception.CommonError;
-import org.oh.common.exception.CommonException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.apache.commons.lang3.reflect.FieldUtils;
+import org.oh.common.exception.CommonError;
+import org.oh.common.exception.CommonException;
 
 import javax.persistence.Id;
 

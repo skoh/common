@@ -16,11 +16,11 @@
 
 package org.oh.common.model;
 
-import org.oh.common.util.DateUtil;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import org.oh.common.util.DateUtil;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

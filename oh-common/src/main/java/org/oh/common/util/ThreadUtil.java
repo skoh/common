@@ -16,9 +16,9 @@
 
 package org.oh.common.util;
 
-import org.oh.common.exception.CommonException;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.extern.slf4j.Slf4j;
+import org.oh.common.exception.CommonException;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
 

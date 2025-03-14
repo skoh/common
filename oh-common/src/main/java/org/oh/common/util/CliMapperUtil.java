@@ -16,9 +16,9 @@
 
 package org.oh.common.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.oh.common.model.data.Data;
 import org.oh.common.service.AbstractCrudMapperService;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * CLI 메퍼 파일 생성 유틸리티

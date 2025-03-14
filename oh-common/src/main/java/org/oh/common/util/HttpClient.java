@@ -16,12 +16,12 @@
 
 package org.oh.common.util;
 
-import org.oh.common.exception.CommonError;
-import org.oh.common.exception.CommonException;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import lombok.extern.slf4j.Slf4j;
+import org.oh.common.exception.CommonError;
+import org.oh.common.exception.CommonException;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;

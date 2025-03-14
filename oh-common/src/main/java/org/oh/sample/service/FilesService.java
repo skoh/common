@@ -16,10 +16,10 @@
 
 package org.oh.sample.service;
 
+import com.hazelcast.core.HazelcastInstance;
 import org.oh.common.service.file.AbstractFilesService;
 import org.oh.sample.model.Files;
 import org.oh.sample.repository.FilesRepository;
-import com.hazelcast.core.HazelcastInstance;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;

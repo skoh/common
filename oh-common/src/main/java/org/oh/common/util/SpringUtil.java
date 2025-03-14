@@ -16,13 +16,13 @@
 
 package org.oh.common.util;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import lombok.extern.slf4j.Slf4j;
 import org.oh.common.controller.DefaultController;
 import org.oh.common.exception.CommonError;
 import org.oh.common.exception.CommonException;
 import org.oh.common.model.user.AbstractUser;
 import org.oh.common.model.user.Login;
-import com.fasterxml.jackson.core.type.TypeReference;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;

@@ -16,10 +16,10 @@
 
 package org.oh.common.controller.data;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.oh.common.controller.AbstractCrudDbController;
 import org.oh.common.model.data.DataDb;
 import org.oh.common.service.data.DataDbService;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.web.bind.annotation.RequestMapping;

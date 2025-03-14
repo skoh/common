@@ -1,9 +1,9 @@
 package org.oh.common.util;
 
-import org.oh.common.config.LoggingConfig;
-import org.oh.common.exception.CommonException;
 import com.google.common.collect.ImmutableList;
 import lombok.extern.slf4j.Slf4j;
+import org.oh.common.config.LoggingConfig;
+import org.oh.common.exception.CommonException;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;

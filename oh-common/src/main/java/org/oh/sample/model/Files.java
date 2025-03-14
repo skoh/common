@@ -16,8 +16,6 @@
 
 package org.oh.sample.model;
 
-import org.oh.common.config.DataGridConfig;
-import org.oh.common.model.AbstractFiles;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -26,6 +24,8 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.oh.common.config.DataGridConfig;
+import org.oh.common.model.AbstractFiles;
 import org.springframework.data.keyvalue.annotation.KeySpace;
 
 import javax.persistence.Entity;

@@ -16,13 +16,13 @@
 
 package org.oh;
 
+import com.hazelcast.spi.properties.ClusterProperty;
+import org.mybatis.spring.annotation.MapperScan;
 import org.oh.common.config.CommonConfig;
 import org.oh.common.model.user.Login;
 import org.oh.common.repository.CrudDbRepository;
 import org.oh.common.repository.CrudRepository;
 import org.oh.sample.mapper.SampleMapper;
-import com.hazelcast.spi.properties.ClusterProperty;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

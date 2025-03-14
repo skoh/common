@@ -16,9 +16,9 @@
 
 package org.oh.common.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.oh.common.model.Model;
 import org.oh.common.service.AbstractCrudMapperService;
-import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;

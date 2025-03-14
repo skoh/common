@@ -16,10 +16,10 @@
 
 package org.oh.common.filter;
 
+import lombok.Setter;
 import org.oh.common.config.CommonConfig;
 import org.oh.common.exception.CommonError;
 import org.oh.common.exception.CommonException;
-import lombok.Setter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

@@ -16,9 +16,6 @@
 
 package org.oh.common.model;
 
-import org.oh.common.converter.DateTimeFormatConverter;
-import org.oh.common.model.data.Condition;
-import org.oh.common.util.JsonUtil;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -29,6 +26,9 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Comment;
+import org.oh.common.converter.DateTimeFormatConverter;
+import org.oh.common.model.data.Condition;
+import org.oh.common.util.JsonUtil;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;

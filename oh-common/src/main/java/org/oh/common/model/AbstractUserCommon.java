@@ -16,8 +16,6 @@
 
 package org.oh.common.model;
 
-import org.oh.common.model.enume.State;
-import org.oh.common.model.user.AbstractUser;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -25,6 +23,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.oh.common.model.enume.State;
+import org.oh.common.model.user.AbstractUser;
 
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;

@@ -16,12 +16,12 @@
 
 package org.oh.common.model.http;
 
+import lombok.extern.slf4j.Slf4j;
 import org.oh.common.controller.ControllerExceptionHandler;
 import org.oh.common.exception.DefaultException;
 import org.oh.common.util.ExceptionUtil;
 import org.oh.common.util.JsonUtil;
 import org.oh.common.util.WebUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;

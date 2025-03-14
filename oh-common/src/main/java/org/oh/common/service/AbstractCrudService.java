@@ -16,6 +16,13 @@
 
 package org.oh.common.service;
 
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.commons.lang3.reflect.FieldUtils;
 import org.oh.common.config.LoggingConfig;
 import org.oh.common.exception.CommonError;
 import org.oh.common.exception.CommonException;
@@ -29,13 +36,6 @@ import org.oh.common.util.CommonUtil;
 import org.oh.common.util.ExceptionUtil;
 import org.oh.common.util.JsonUtil;
 import org.oh.common.util.SpringUtil;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.lang3.reflect.FieldUtils;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.support.PageableExecutionUtils;
@@ -588,7 +588,8 @@ public abstract class AbstractCrudService<T extends Model<ID>, ID>
 
 	protected void throwIdNull(T entity) {
 		if (entity.id() == null) {
-			throw new CommonException(CommonError.COM_ID_IS_NULL, "[\"" + getTypeName() + "\"," + JsonUtil.GSON.toJson(entity));
+			throw new CommonException(CommonError.COM_ID_IS_NULL, "[\"" + getTypeName() +
+					"\"," + JsonUtil.GSON.toJson(entity));
 		}
 	}
 

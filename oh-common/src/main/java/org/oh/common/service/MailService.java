@@ -16,6 +16,10 @@
 
 package org.oh.common.service;
 
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.oh.common.annotation.ResultLogging;
 import org.oh.common.config.CommonConfig;
 import org.oh.common.exception.CommonError;
@@ -23,10 +27,6 @@ import org.oh.common.exception.CommonException;
 import org.oh.common.model.Mail;
 import org.oh.common.util.JsonUtil;
 import org.oh.common.util.WebUtil;
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.mail.javamail.JavaMailSender;

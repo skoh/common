@@ -16,8 +16,8 @@
 
 package org.oh.common.converter;
 
-import org.oh.common.util.JsonUtil;
 import com.fasterxml.jackson.databind.JsonNode;
+import org.oh.common.util.JsonUtil;
 
 import javax.persistence.AttributeConverter;
 

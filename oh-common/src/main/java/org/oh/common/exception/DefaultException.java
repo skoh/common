@@ -16,10 +16,10 @@
 
 package org.oh.common.exception;
 
-import org.oh.common.util.ExceptionUtil;
-import org.oh.common.util.StringUtil;
 import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
+import org.oh.common.util.ExceptionUtil;
+import org.oh.common.util.StringUtil;
 
 /**
  * 기본 예외
@@ -62,8 +62,8 @@ public abstract class DefaultException
 
 	protected DefaultException(Error error, String message, Throwable cause) {
 		super(StringUtil.joiningBySpace(error.toCodeString(),
-						StringUtils.isEmpty(message) && cause != null ? ExceptionUtil.getNotRootMessage(cause) : message),
-				cause);
+				StringUtils.isEmpty(message) && cause != null ?
+						ExceptionUtil.getNotRootMessage(cause) : message), cause);
 		this.error = error;
 	}
 }

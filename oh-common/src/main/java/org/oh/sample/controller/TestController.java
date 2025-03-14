@@ -16,7 +16,12 @@
 
 package org.oh.sample.controller;
 
-import org.oh.common.annotation.ResultLogging;
+import com.hazelcast.core.HazelcastInstance;
+import com.hazelcast.map.IMap;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
 import org.oh.common.config.DataGridConfig;
 import org.oh.common.config.LoggingConfig;
 import org.oh.common.controller.DefaultController;
@@ -26,12 +31,6 @@ import org.oh.common.util.JsonUtil;
 import org.oh.common.util.WebUtil;
 import org.oh.sample.model.Sample;
 import org.oh.sample.service.SampleService;
-import com.hazelcast.core.HazelcastInstance;
-import com.hazelcast.map.IMap;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.session.MapSession;

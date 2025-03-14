@@ -16,7 +16,8 @@
 
 package org.oh.sample.controller;
 
-import org.oh.common.annotation.ResultLogging;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.oh.common.controller.AbstractCrudDbController;
 import org.oh.common.model.data.Paging;
 import org.oh.common.model.data.Sorting;
@@ -25,8 +26,6 @@ import org.oh.sample.model.StatsParams;
 import org.oh.sample.model.StatsResult;
 import org.oh.sample.service.SampleDbService;
 import org.oh.sample.service.SampleService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -16,8 +16,6 @@
 
 package org.oh.common.util;
 
-import org.oh.common.model.user.AbstractUser;
-import org.oh.common.model.user.Login;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtParser;
@@ -27,6 +25,8 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.oh.common.model.user.AbstractUser;
+import org.oh.common.model.user.Login;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

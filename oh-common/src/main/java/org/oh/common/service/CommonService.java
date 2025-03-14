@@ -16,7 +16,9 @@
 
 package org.oh.common.service;
 
-import org.oh.common.annotation.ResultLogging;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.oh.common.config.SecurityConfig;
 import org.oh.common.filter.SecurityFilter;
 import org.oh.common.model.user.Login;
@@ -24,9 +26,6 @@ import org.oh.common.security.PropertyUserDetailsService;
 import org.oh.common.util.JsonUtil;
 import org.oh.common.util.SecurityUtil;
 import org.oh.common.util.SpringUtil;
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -59,7 +58,7 @@ public class CommonService {
 	 * @return 토큰 (JWT 또는 AES256 토큰)
 	 * @see SecurityConfig
 	 */
-	@ResultLogging(result = true)
+//	@ResultLogging(result = true)
 	public String login(Login login) {
 		String token;
 		if (userDetailsService.isEnabled()) {

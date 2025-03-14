@@ -1,12 +1,12 @@
 package org.oh.common.config;
 
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
 import org.oh.common.annotation.ExceptionHandling;
 import org.oh.common.annotation.ResultLogging;
 import org.oh.common.exception.CommonException;
 import org.oh.common.util.CheckedFuncIf;
 import org.oh.common.util.ExceptionUtil;
-import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;

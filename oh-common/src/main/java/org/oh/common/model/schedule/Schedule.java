@@ -16,8 +16,6 @@
 
 package org.oh.common.model.schedule;
 
-import org.oh.common.config.DataGridConfig;
-import org.oh.common.model.AbstractCommon;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.EqualsAndHashCode;
@@ -26,6 +24,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.Comment;
+import org.oh.common.config.DataGridConfig;
+import org.oh.common.model.AbstractCommon;
 import org.springframework.data.keyvalue.annotation.KeySpace;
 
 import javax.persistence.Column;

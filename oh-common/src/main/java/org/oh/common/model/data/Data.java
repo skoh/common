@@ -16,10 +16,6 @@
 
 package org.oh.common.model.data;
 
-import org.oh.common.config.DataGridConfig;
-import org.oh.common.converter.JsonDataConverter;
-import org.oh.common.model.AbstractCommon;
-import org.oh.common.util.JsonUtil;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -30,6 +26,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.Comment;
+import org.oh.common.config.DataGridConfig;
+import org.oh.common.converter.JsonDataConverter;
+import org.oh.common.model.AbstractCommon;
+import org.oh.common.util.JsonUtil;
 import org.springframework.data.keyvalue.annotation.KeySpace;
 
 import javax.persistence.Column;

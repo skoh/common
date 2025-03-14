@@ -16,11 +16,10 @@
 
 package org.oh.common.mapper;
 
-import org.oh.common.annotation.ResultLogging;
-import org.oh.common.model.Model;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.oh.common.model.Model;
 
 import java.util.List;
 import java.util.Map;

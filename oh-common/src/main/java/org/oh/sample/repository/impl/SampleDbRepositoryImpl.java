@@ -16,6 +16,11 @@
 
 package org.oh.sample.repository.impl;
 
+import com.google.common.collect.ImmutableList;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.http.message.BasicNameValuePair;
 import org.oh.common.model.data.Query;
 import org.oh.common.model.data.Sorting;
 import org.oh.common.repository.AbstractDbRepository;
@@ -23,11 +28,6 @@ import org.oh.sample.model.Sample;
 import org.oh.sample.model.StatsParams;
 import org.oh.sample.model.StatsResult;
 import org.oh.sample.repository.SampleJpqlRepository;
-import com.google.common.collect.ImmutableList;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.http.message.BasicNameValuePair;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;

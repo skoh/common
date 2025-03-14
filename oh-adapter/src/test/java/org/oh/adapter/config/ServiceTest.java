@@ -1,8 +1,8 @@
 package org.oh.adapter.config;
 
-import org.oh.AdapterApplication;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.oh.AdapterApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;

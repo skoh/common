@@ -16,8 +16,6 @@
 
 package org.oh.common.util;
 
-import org.oh.common.exception.CommonError;
-import org.oh.common.exception.CommonException;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.apache.commons.imaging.ImageReadException;
@@ -29,6 +27,8 @@ import org.apache.commons.imaging.formats.jpeg.exif.ExifRewriter;
 import org.apache.commons.imaging.formats.tiff.TiffImageMetadata;
 import org.apache.commons.io.IOUtils;
 import org.imgscalr.Scalr;
+import org.oh.common.exception.CommonError;
+import org.oh.common.exception.CommonException;
 
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;

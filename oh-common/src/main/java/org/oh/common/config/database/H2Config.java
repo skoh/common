@@ -16,8 +16,8 @@
 
 package org.oh.common.config.database;
 
-import org.oh.common.config.CommonConfig;
 import org.h2.tools.Server;
+import org.oh.common.config.CommonConfig;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.context.annotation.Bean;

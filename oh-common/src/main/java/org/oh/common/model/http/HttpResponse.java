@@ -16,15 +16,15 @@
 
 package org.oh.common.model.http;
 
-import org.oh.common.exception.DefaultException;
-import org.oh.common.exception.Error;
-import org.oh.common.util.ExceptionUtil;
-import org.oh.common.util.StringUtil;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import org.oh.common.exception.DefaultException;
+import org.oh.common.exception.Error;
+import org.oh.common.util.ExceptionUtil;
+import org.oh.common.util.StringUtil;
 
 /**
  * HTTP 응답 메세지

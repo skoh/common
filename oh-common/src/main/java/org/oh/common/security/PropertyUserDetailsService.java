@@ -16,13 +16,13 @@
 
 package org.oh.common.security;
 
+import lombok.Data;
 import org.oh.common.config.SecurityConfig;
 import org.oh.common.exception.CommonError;
 import org.oh.common.exception.CommonException;
 import org.oh.common.model.user.AbstractUser;
 import org.oh.common.model.user.Login;
 import org.oh.common.util.SecurityUtil;
-import lombok.Data;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;

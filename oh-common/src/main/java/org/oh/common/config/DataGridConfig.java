@@ -16,8 +16,6 @@
 
 package org.oh.common.config;
 
-import org.oh.common.model.AbstractFiles;
-import org.oh.common.model.schedule.Schedule;
 import com.hazelcast.config.Config;
 import com.hazelcast.config.cp.CPSubsystemConfig;
 import com.hazelcast.core.Hazelcast;
@@ -25,6 +23,8 @@ import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.spi.properties.ClusterProperty;
 import com.hazelcast.spring.transaction.HazelcastTransactionManager;
 import com.hazelcast.spring.transaction.ManagedTransactionalTaskContext;
+import org.oh.common.model.AbstractFiles;
+import org.oh.common.model.schedule.Schedule;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

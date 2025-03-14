@@ -16,7 +16,6 @@
 
 package org.oh.sample.model;
 
-import org.oh.common.util.DateUtil;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -24,6 +23,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.apache.commons.lang3.StringUtils;
+import org.oh.common.util.DateUtil;
 
 import java.util.Map;
 

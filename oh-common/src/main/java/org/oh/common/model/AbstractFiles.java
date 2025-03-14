@@ -16,8 +16,6 @@
 
 package org.oh.common.model;
 
-import org.oh.common.annotation.ExcludeLogging;
-import org.oh.common.model.enume.State;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -30,6 +28,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.Comment;
+import org.oh.common.annotation.ExcludeLogging;
+import org.oh.common.model.enume.State;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;

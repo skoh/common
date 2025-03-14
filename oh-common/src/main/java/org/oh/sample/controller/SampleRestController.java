@@ -16,10 +16,10 @@
 
 package org.oh.sample.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.oh.common.controller.AbstractCrudKvController;
 import org.oh.sample.model.Sample;
 import org.oh.sample.service.SampleService;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

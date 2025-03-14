@@ -16,9 +16,9 @@
 
 package org.oh.common.repository;
 
+import lombok.extern.slf4j.Slf4j;
 import org.oh.common.model.data.Query;
 import org.oh.common.util.QueryUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.query.QueryUtils;

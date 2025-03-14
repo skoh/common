@@ -16,7 +16,6 @@
 
 package org.oh.sample.mapper;
 
-import org.oh.common.annotation.ResultLogging;
 import org.oh.common.mapper.CrudMapper;
 import org.oh.sample.model.Sample;
 

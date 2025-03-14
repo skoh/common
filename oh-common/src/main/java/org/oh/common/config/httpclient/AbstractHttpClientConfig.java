@@ -16,9 +16,6 @@
 
 package org.oh.common.config.httpclient;
 
-import org.oh.common.config.CommonConfig;
-import org.oh.common.exception.CommonError;
-import org.oh.common.exception.CommonException;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,6 +29,9 @@ import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.ssl.SSLContexts;
+import org.oh.common.config.CommonConfig;
+import org.oh.common.exception.CommonError;
+import org.oh.common.exception.CommonException;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.boot.web.client.RestTemplateCustomizer;

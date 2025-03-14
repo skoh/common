@@ -1,12 +1,12 @@
 package org.oh.common.util;
 
-import org.oh.common.config.LoggingConfig;
-import org.oh.common.config.ServiceTest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.oh.common.config.LoggingConfig;
+import org.oh.common.config.ServiceTest;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.concurrent.CompletionException;
